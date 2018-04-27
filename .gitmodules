@@ -1,0 +1,3 @@
+[submodule "target/tidy_html"]
+	path = target/tidy_html
+	url = https://github.com/f34nk/tidy_html.git
