@@ -6,20 +6,13 @@
 
 void parse(html_workspace_t* w, const char* html, /*const char* scope_name,*/ vec_eterm_t* term_array)
 {
-  //   int tree_index = html_parse_tree(w, html, strlen(html));
+  int buffer_index = html_parse(w, html);
 
-  // #if 0
-  //   int collection_index  = html_select_scope(w, tree_index, scope_name);
-  //   int buffer_index = html_parse_collection(w, collection_index);
-  // #else
-  //   int buffer_index = html_parse_tree(w, tree_index, scope_name);
-  // #endif
-
-  //   html_vec_str_t* buffer = html_get_buffer(w, buffer_index);
-  //   int i; char* val;
-  //   html_vec_foreach(buffer, val, i) {
-  //     eterm_vec_push(term_array, erl_mk_binary(val, strlen(val)));
-  //   }
+  html_vec_str_t* buffer = html_get_buffer(w, buffer_index);
+  int i; char* val;
+  html_vec_foreach(buffer, val, i) {
+    eterm_vec_push(term_array, erl_mk_binary(val, strlen(val)));
+  }
 }
 
 ETERM* handle_parse(ErlMessage* emsg)
