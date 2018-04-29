@@ -27,6 +27,6 @@
  * @param  data      [html string]
  * @return           [new html]
  */
-char* html_parse(tidy_doc_t* doc, const char* data);
+char* tidy_parse(tidy_workspace_t* workspace, const char* data);
 
 #endif

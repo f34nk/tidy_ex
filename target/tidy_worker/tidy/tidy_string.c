@@ -1,11 +1,11 @@
-#include "html_string.h"
-#include "html_memory.h"
+#include "tidy_string.h"
+#include "tidy_memory.h"
 
 #include <stdio.h> /* needed for vsnprintf */
 #include <stdlib.h> /* needed for malloc-free */
 #include <stdarg.h> /* needed for va_list */
 
-int html_string_vscprintf(const char* format, va_list pargs)
+int tidy_string_vscprintf(const char* format, va_list pargs)
 {
   int retval;
   va_list argcopy;
@@ -15,30 +15,30 @@ int html_string_vscprintf(const char* format, va_list pargs)
   return retval;
 }
 
-int html_string_vasprintf(char** strp, const char* fmt, va_list ap)
+int tidy_string_vasprintf(char** strp, const char* fmt, va_list ap)
 {
-  int len = html_string_vscprintf(fmt, ap);
+  int len = tidy_string_vscprintf(fmt, ap);
   if (len == -1) {
     return -1;
   }
-  char* str = html_malloc((size_t) len + 1);
+  char* str = tidy_malloc((size_t) len + 1);
   if (!str) {
     return -1;
   }
   int r = vsnprintf(str, len + 1, fmt, ap); /* "secure" version of vsprintf */
   if (r == -1) {
-    html_free(str);
+    tidy_free(str);
     return -1;
   }
   *strp = str;
   return r;
 }
 
-int html_string_asprintf(char* strp[], const char* fmt, ...)
+int tidy_string_asprintf(char* strp[], const char* fmt, ...)
 {
   va_list ap;
   va_start(ap, fmt);
-  int r = html_string_vasprintf(strp, fmt, ap);
+  int r = tidy_string_vasprintf(strp, fmt, ap);
   va_end(ap);
   return r;
 }
@@ -52,7 +52,7 @@ int html_string_asprintf(char* strp[], const char* fmt, ...)
 //   if(str1) n += strlen(str1);
 //   if(str2) n += strlen(str2);
 
-//   if((str1 || str2) && (result = html_malloc(n + 1)) != NULL)
+//   if((str1 || str2) && (result = tidy_malloc(n + 1)) != NULL)
 //   {
 //     *result = '\0';
 
@@ -92,7 +92,7 @@ int html_string_asprintf(char* strp[], const char* fmt, ...)
 //      knows where the list of returned strings ends. */
 //   count++;
 
-//   result = html_malloc(sizeof(char*) * count);
+//   result = tidy_malloc(sizeof(char*) * count);
 
 //   if (result)
 //   {
@@ -112,14 +112,14 @@ int html_string_asprintf(char* strp[], const char* fmt, ...)
 //   return result;
 // }
 
-// char* html_string_copy(const char* string, char* copy)
+// char* tidy_string_copy(const char* string, char* copy)
 // {
 // #if 1
 //   if(string == NULL) {
 //     return NULL;
 //   }
 
-//   char *data = html_malloc(strlen(string) + 1 * sizeof(char*));
+//   char *data = tidy_malloc(strlen(string) + 1 * sizeof(char*));
 //   if(data == NULL) {
 //     return NULL;
 //   }

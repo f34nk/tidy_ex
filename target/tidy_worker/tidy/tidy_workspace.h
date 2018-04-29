@@ -22,12 +22,15 @@
 #include "tidy_includes.h"
 
 /**
- * Map of string key and key value.
+ * The space we work in.
  */
-typedef TidyDoc tidy_doc_t;
+struct tidy_workspace {
+  TidyDoc doc;
+}
+typedef tidy_workspace_t;
 
-tidy_doc_t* tidy_init(html_map_str_t* options);
+tidy_workspace_t* tidy_init(tidy_map_str_t* options);
 
-void tidy_destroy(tidy_doc_t* doc);
+void tidy_destroy(tidy_workspace_t* doc);
 
 #endif

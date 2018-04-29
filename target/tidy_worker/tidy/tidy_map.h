@@ -1,5 +1,5 @@
-#ifndef HTML_MAP_H
-#define HTML_MAP_H
+#ifndef TIDY_MAP_H
+#define TIDY_MAP_H
 
 /*
  Copyright (C) 2018 Frank Eickhoff
@@ -24,13 +24,13 @@
 /**
  * Map of string key and key value.
  */
-typedef map_t(char*) html_map_str_t;
+typedef map_t(char*) tidy_map_str_t;
 
-#define html_map_set(m, key, value) map_set(m, key, value)
-#define html_map_get(m, key) map_get(m, key)
-#define html_map_next(m, iter) map_next(m, iter)
-#define html_map_init(m) map_init(m)
-#define html_map_iter(m) map_iter(m)
-#define html_map_deinit(m) map_deinit(m)
+#define tidy_map_set(m, key, value) map_set(m, key, value)
+#define tidy_map_get(m, key) map_get(m, key)
+#define tidy_map_next(m, iter) map_next(m, iter)
+#define tidy_map_init(m) map_init(m)
+#define tidy_map_iter(m) map_iter(m)
+#define tidy_map_deinit(m) map_deinit(m)
 
 #endif

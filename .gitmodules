@@ -1,6 +1,3 @@
-[submodule "target/tidy_html"]
-	path = target/tidy_html
-	url = https://github.com/f34nk/tidy_html.git
 [submodule "target/tidy-html5"]
 	path = target/tidy-html5
 	url = https://github.com/htacg/tidy-html5.git
@@ -10,3 +7,6 @@
 [submodule "target/dmt"]
 	path = target/dmt
 	url = https://github.com/rxi/dmt.git
+[submodule "target/vec"]
+	path = target/vec
+	url = https://github.com/rxi/vec.git

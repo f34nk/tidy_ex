@@ -21,7 +21,7 @@ set(TIDY_HTML5_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../tidy-html5")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${TIDY_HTML5_PATH}/include")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -L${TIDY_HTML5_PATH}/build/cmake")
 
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_CURRENT_SOURCE_DIR}/../vec/src")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_CURRENT_SOURCE_DIR}/../vec/src")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_CURRENT_SOURCE_DIR}/../map/src")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_CURRENT_SOURCE_DIR}/../dmt/src")
 
@@ -49,14 +49,17 @@ add_executable(
   ${HANDLERS}
   tidy_worker.c
   handle_send.c
+  ../vec/src/vec.c
+  ../map/src/map.c
+  ../dmt/src/dmt.c
 )
 
 # add target tests
 
-# add_subdirectory(test)
-# enable_testing()
-# file(GLOB_RECURSE TESTS "${CMAKE_CURRENT_SOURCE_DIR}/test/*.c")
-# foreach(TEST ${TESTS})
-#   get_filename_component(TEST ${TEST} NAME_WE)
-#   add_test(NAME ${TEST} COMMAND ${TEST})
-# endforeach()
+add_subdirectory(test)
+enable_testing()
+file(GLOB_RECURSE TESTS "${CMAKE_CURRENT_SOURCE_DIR}/test/*.c")
+foreach(TEST ${TESTS})
+  get_filename_component(TEST ${TEST} NAME_WE)
+  add_test(NAME ${TEST} COMMAND ${TEST})
+endforeach()

@@ -9,9 +9,11 @@
 #include <tidy.h>
 #include <tidybuffio.h>
 
-// #include "html_map.h"
-// #include "html_vec.h"
-// #include "html_memory.h"
-// #include "html_string.h"
+#include "tidy_map.h"
+// #include "tidy_vec.h"
+#include "tidy_memory.h"
+#include "tidy_string.h"
+#include "tidy_options.h"
+#include "tidy_workspace.h"
 
 #endif

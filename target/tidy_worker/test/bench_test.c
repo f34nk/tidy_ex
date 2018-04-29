@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
     clock_t start = clock();
     clock_t diff = clock() - start;
     int c = 0;
-    while(clock_to_sec(diff) < 1.0 && result == 0) {
+    while(clock_to_sec(diff) < 0.5 && result == 0) {
       result = bench[i](c, html);
       diff = clock() - start;
       c += 1;
