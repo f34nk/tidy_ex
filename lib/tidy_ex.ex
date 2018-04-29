@@ -10,7 +10,7 @@ defmodule TidyEx do
   ## Example
 
       iex> TidyEx.parse("<p>Hello World")
-      "<p>Hello World</p>"
+      "<p>Hello World</p>\\n"
 
   """
 
@@ -35,7 +35,7 @@ defmodule TidyEx do
   ## Examples
 
       iex> TidyEx.parse("<div>Hello<span>World")
-      "<div>Hello<span>World</span></div>"
+      "<div>Hello<span>World</span></div>\\n"
 
   """
   @spec parse(input()) :: success() | error()
