@@ -9,6 +9,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-parameter")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_GNU_SOURCE")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-write-strings")
 
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_CURRENT_SOURCE_DIR}/../tidy")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_CURRENT_SOURCE_DIR}/../handlers")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${CMAKE_CURRENT_SOURCE_DIR}/../utils")
 
@@ -16,6 +17,7 @@ message("CMAKE_CURRENT_SOURCE_DIR = ${CMAKE_CURRENT_SOURCE_DIR}")
 
 file(GLOB_RECURSE UTILS "../utils/*.c")
 file(GLOB_RECURSE HANDLERS "../handlers/*.c")
+file(GLOB_RECURSE TIDY "../tidy/*.c")
 
 file(GLOB_RECURSE TESTS "*_test.c")
 foreach(TEST ${TESTS})
@@ -24,14 +26,25 @@ foreach(TEST ${TESTS})
   add_executable(${TEST_NAME} ${TEST})
   target_link_libraries(
     ${TEST_NAME}
-    libtidy_html.a
     libtidys.a
   )
   target_sources(
     ${TEST_NAME}
     PUBLIC
     ${UTILS}
+    ${TIDY}
+    ../../vec/src/vec.c
+    ../../map/src/map.c
+    ../../dmt/src/dmt.c
   )
+
+  # enable debugging and memory tracing for tests
+  # target_compile_definitions(
+  #   ${TEST_NAME}
+  #   PRIVATE
+  #   TIDY_HTML_DEBUG=1
+  #   TIDY_HTML_USE_DMT=1
+  # )
 endforeach()
 
 file(GLOB_RECURSE TESTS "bench*_test.c")
@@ -47,7 +60,7 @@ endforeach()
 
 file(GLOB_RECURSE TESTS "handle_*_test.c")
 foreach(TEST ${TESTS})
-  # message("TEST = ${TEST}")
+  message("TEST = ${TEST}")
   get_filename_component(TEST_NAME ${TEST} NAME_WE)
   string(
     REGEX REPLACE
@@ -59,5 +72,13 @@ foreach(TEST ${TESTS})
     ${TEST_NAME}
     PUBLIC
     ../handlers/${TEST_SOUCRE}
+  )
+
+  # enable debugging and memory tracing for tests
+  target_compile_definitions(
+    ${TEST_NAME}
+    PRIVATE
+    TIDY_HTML_DEBUG=1
+    TIDY_HTML_USE_DMT=1
   )
 endforeach()

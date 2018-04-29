@@ -4,22 +4,11 @@ current=`pwd`
 
 echo "Clean TidyEx target from $current"
 
-check=`find target \( -name libtidy_html.a \)`
-if [ ! -z "$check" ]
-then
-	echo "Clean tidy_html..."
-	cd target/tidy_html/build
-	make clean
-	cd $current
-	rm -rf target/tidy_html/build
-	echo "done"
-fi
-
 check=`find target \( -name libtidys.a \)`
 if [ ! -z "$check" ]
 then
 	echo "Clean tidy-html5..."
-	cd target/tidy_html/libs/tidy-html5/build/cmake
+	cd target/tidy-html5/build/cmake
 	make clean
 	cd $current
 	echo "done"

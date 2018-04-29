@@ -72,7 +72,7 @@ void eterm_vec_destroy(vec_eterm_t* vec)
 
   while(vec->length > 0) {
     ETERM* term = eterm_vec_pop(vec);
-    erl_free_term(term); 
+    erl_free_term(term);
   }
 
   eterm_vec_deinit(vec);
