@@ -6,15 +6,19 @@ echo "Compiling ModestEx target from $current $mix_env"
 
 tidy_worker="tidy_worker"
 
-check=`find target \( -name libtidy_html.a \)`
+check=`find target/tidy-html5 \( -name libtidys.a \)`
 if [ -z "$check" ]
 then
-	echo "Compiling tidy_html..."
-	
-	cd target/tidy_html
-	./configure && cd build && make
-	cd $current
-	echo "done"
+  echo "Compiling tidy-html5..."
+  # tidy-html5
+  # https://github.com/htacg/tidy-html5/blob/next/README/BUILD.md
+  cd target/tidy-html5/build/cmake
+
+  cmake ../.. -DCMAKE_BUILD_TYPE=Release -DSUPPORT_CONSOLE_APP=OFF -DBUILD_SHARED_LIB=OFF
+  make
+
+  cd $current
+  echo "done"
 fi
 
 function compile_tidy_worker()
