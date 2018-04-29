@@ -16,8 +16,6 @@ Elixir/Erlang bindings for htacg's **tidy-html5**
 
 - [tidy-html5](https://github.com/htacg/tidy-html5)
 
-All tidy related features are implemeted in `C` using my wrapper library [tidy_html](https://github.com/f34nk/tidy_html).
-
 The binding is implemented as a **C-Node** following the excellent example in Overbryd's package **nodex**. If you want to learn how to set up bindings to C/C++, you should definitely check it out.
 
 - [nodex](https://github.com/Overbryd/nodex)
@@ -27,8 +25,12 @@ The binding is implemented as a **C-Node** following the excellent example in Ov
 >C-Nodes are external os-processes that communicate with the Erlang VM through erlang messaging. That way you can implement native code and call into it from Elixir in a safe predictable way. The Erlang VM stays unaffected by crashes of the external process.
 
 ## Example
-
+For more examples please checkout [tests](https://github.com/f34nk/tidy_ex/tree/master/test).
 ```elixir
+test "can parse broken html" do
+  result = TidyEx.parse("<div>Hello<span>World")
+  assert result == "<div>Hello<span>World</span></div>"
+end
 ```
 
 ## Installation
@@ -79,11 +81,10 @@ See [CHANGELOG](https://github.com/f34nk/tidy_ex/blob/master/CHANGELOG.md).
   - [ ] Feature tests
   - [ ] Package test
 - [ ] Features
-  - [ ] Serialize any string with valid or broken html
-  - [ ] Pretty print html
+  - [ ] Set tidy-html5 options
+  - [x] Serialize any string with valid or broken html
   - [ ] Clean and repair
   - [ ] Run diagnostics
-  - [ ] Transform html string by list of actions
 - [ ] Documentation
 - [ ] Publish as hex package
 

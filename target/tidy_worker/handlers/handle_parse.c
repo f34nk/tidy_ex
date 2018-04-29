@@ -28,6 +28,7 @@ ETERM* handle_parse(ErlMessage* emsg)
 
     tidy_map_set(&options, "TidyShowWarnings", "no");
     tidy_map_set(&options, "TidyBodyOnly", "yes");
+    tidy_map_set(&options, "TidyQuiet", "yes");
     // minify
     tidy_map_set(&options, "TidyVertSpace", "auto");
     tidy_map_set(&options, "TidyIndentSpaces", "0");
