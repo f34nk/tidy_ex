@@ -1,9 +1,20 @@
 
-# modest_worker
+# tidy_worker
 
-Erlang binding to Modest library.
+Erlang binding to tidy-html5 library.
 
-# modest_html
+# tidy-html5
+The granddaddy of HTML tools, with support for modern standards http://www.html-tidy.org
+https://github.com/htacg/tidy-html5
 
-Wrapping library for Modest.
-https://github.com/f34nk/modest_html
+# dmt
+Dynamic memory tracker for C
+https://github.com/rxi/dmt
+
+# vec
+ A type-safe dynamic array implementation for C
+https://github.com/rxi/vec
+
+# map
+A type-safe hash map implementation for C
+https://github.com/rxi/map
