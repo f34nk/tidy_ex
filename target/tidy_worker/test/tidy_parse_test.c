@@ -25,7 +25,7 @@ int parse_html_string_test(tidy_workspace_t* w)
   const char* html = "<p>Hello</p><p>World</p>";
   char* result = tidy_parse(w, html);
   printf("-> '%s'\n", result);
-  if(strcmp(result, "<p>Hello</p>\n<p>World</p>") != 0) {
+  if(strcmp(result, "<p>Hello</p><p>World</p>") != 0) {
     tidy_free(result);
     TIDY_HTML_LOG_ERROR
     return 1;

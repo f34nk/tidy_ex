@@ -82,3 +82,28 @@ foreach(TEST ${TESTS})
     TIDY_HTML_USE_DMT=1
   )
 endforeach()
+
+file(GLOB_RECURSE TESTS "tidy_*_test.c")
+foreach(TEST ${TESTS})
+  message("TEST = ${TEST}")
+  get_filename_component(TEST_NAME ${TEST} NAME_WE)
+  string(
+    REGEX REPLACE
+    "_test" ".c"
+    TEST_SOUCRE
+    ${TEST_NAME}
+  )
+  target_sources(
+    ${TEST_NAME}
+    PUBLIC
+    ../handlers/${TEST_SOUCRE}
+  )
+
+  # enable debugging and memory tracing for tests
+  target_compile_definitions(
+    ${TEST_NAME}
+    PRIVATE
+    TIDY_HTML_DEBUG=1
+    TIDY_HTML_USE_DMT=1
+  )
+endforeach()
