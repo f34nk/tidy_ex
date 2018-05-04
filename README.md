@@ -31,6 +31,11 @@ test "can parse broken html" do
   result = TidyEx.parse("<div>Hello<span>World")
   assert result == "<div>Hello<span>World</span></div>"
 end
+
+test "can clean and repair broken html" do
+  result = TidyEx.clean_and_repair("<div>Hello<span>World")
+  assert result == "<div>Hello<span>World</span></div>"
+end
 ```
 
 ## Installation
