@@ -12,6 +12,7 @@
 #define TIDY_HTML_LOG_ERROR
 #endif
 
+#include "tidy_map.h"
 #include "tidy_options.h"
 #include "tidy_workspace.h"
 #include "tidy_parse.h"

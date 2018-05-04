@@ -33,4 +33,6 @@ typedef map_t(char*) tidy_map_str_t;
 #define tidy_map_iter(m) map_iter(m)
 #define tidy_map_deinit(m) map_deinit(m)
 
+char* tidy_map_join(tidy_map_str_t* map, const char* delimiter1, const char* delimiter2);
+
 #endif

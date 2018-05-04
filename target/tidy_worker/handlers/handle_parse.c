@@ -4,7 +4,7 @@
 
 #include "tidy_html.h"
 
-void parse(tidy_workspace_t* workspace, const char* html, /*const char* scope_name,*/ vec_eterm_t* term_array)
+void parse(tidy_workspace_t* workspace, const char* html, vec_eterm_t* term_array)
 {
   char* result = tidy_parse(workspace, html);
   eterm_vec_push(term_array, erl_mk_binary(result, strlen(result)));
@@ -14,40 +14,58 @@ void parse(tidy_workspace_t* workspace, const char* html, /*const char* scope_na
 ETERM* handle_parse(ErlMessage* emsg)
 {
   ETERM* response = NULL;
-  // ETERM* pattern = erl_format("{parse, Html, Scope}");
-  ETERM* pattern = erl_format("{parse, Html}");
+  ETERM* pattern = erl_format("{parse, Html, Options}");
+
+  tidy_map_str_t options;
+  tidy_map_init(&options);
 
   if (erl_match(pattern, emsg->msg)) {
     ETERM* html_term = erl_var_content(pattern, "Html");
-    // ETERM* scope_term = erl_var_content(pattern, "Scope");
+    ETERM* options_term = erl_var_content(pattern, "Options");
     char* html = (char*)ERL_BIN_PTR(html_term);
-    // char* scope = (char*)ERL_BIN_PTR(scope_term);
 
-    tidy_map_str_t options;
-    tidy_map_init(&options);
+    if(ERL_IS_LIST(options_term)) {
+      ETERM* list = options_term;
+      int length = erl_length(options_term);
 
-    tidy_map_set(&options, "TidyShowWarnings", "no");
-    tidy_map_set(&options, "TidyBodyOnly", "yes");
-    tidy_map_set(&options, "TidyQuiet", "yes");
-    // minify
-    tidy_map_set(&options, "TidyVertSpace", "auto");
-    tidy_map_set(&options, "TidyIndentSpaces", "0");
+      for(int i = 0; i < length; i++) {
+        ETERM* tuple = (ETERM*)ERL_CONS_HEAD(list);
+
+        if(ERL_IS_TUPLE(tuple) && ERL_TUPLE_SIZE(tuple) == 2) {
+          ETERM* key_term = erl_element(1, tuple);
+          ETERM* value_term = erl_element(2, tuple);
+          char* key = erl_iolist_to_string(key_term);
+          char* value = erl_iolist_to_string(value_term);
+
+          tidy_map_set(&options, key, value);
+        }
+
+        if(i < length - 1 ) {
+          list = (ETERM*)ERL_CONS_TAIL(list);
+          erl_free_term(tuple);
+        }
+      }
+    }
 
     tidy_workspace_t* workspace = tidy_init(&options);
 
-    vec_eterm_t term_array;
-    eterm_vec_init(&term_array);
-    parse(workspace, html, /*scope,*/ &term_array);
-    ETERM* term_list = eterm_vec_to_list(term_array);
-    response = erl_format("{parse, ~w}", term_list);
+    // vec_eterm_t term_array;
+    // eterm_vec_init(&term_array);
+    // parse(workspace, html, &term_array);
+    // ETERM* term_list = eterm_vec_to_list(term_array);
+    // response = erl_format("{parse, ~w}", term_list);
+
+    char* result = tidy_parse(workspace, html);
+    response = erl_format("{parse, ~w}", erl_mk_binary(result, strlen(result)));
+    tidy_free(result);
 
     // free allocated resources
-    eterm_vec_destroy(&term_array);
-    erl_free_term(term_list);
+    // eterm_vec_destroy(&term_array);
+    // erl_free_term(term_list);
     tidy_map_deinit(&options);
     tidy_destroy(workspace);
     erl_free_term(html_term);
-    // erl_free_term(scope_term);
+    // erl_free_term(options_term);
   }
 
   erl_free_term(pattern);

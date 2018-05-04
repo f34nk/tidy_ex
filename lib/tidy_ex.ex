@@ -29,6 +29,15 @@ defmodule TidyEx do
   end
 
   @doc """
+  Internal use
+  """
+  def resolve(bin), do: bin
+
+  def options() do
+    Application.get_env(:tidyt_ex, :options, [{"TidyShowWarnings", "no"}, {"TidyBodyOnly", "yes"}, {"TidyQuiet", "yes"}, {"TidyVertSpace", "auto"}, {"TidyIndentSpaces", "0"}])
+  end
+
+  @doc """
   Serialize any string with valid or broken html.
   Returns valid html string.
 
