@@ -72,7 +72,7 @@ mix clean
 See [CHANGELOG](https://github.com/f34nk/tidy_ex/blob/master/CHANGELOG.md).
 
 - [ ] Bindings
-  - [ ] Call as C-Node
+  - [x] Call as C-Node
   - [ ] Call as dirty-nif
 - [ ] Tests
   - [ ] Call as C-Node
@@ -81,7 +81,7 @@ See [CHANGELOG](https://github.com/f34nk/tidy_ex/blob/master/CHANGELOG.md).
   - [ ] Feature tests
   - [ ] Package test
 - [ ] Features
-  - [ ] Set tidy-html5 options
+  - [x] Set tidy-html5 options
   - [x] Serialize any string with valid or broken html
   - [ ] Clean and repair
   - [ ] Run diagnostics
