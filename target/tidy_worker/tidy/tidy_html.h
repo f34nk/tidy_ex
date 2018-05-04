@@ -16,6 +16,6 @@
 #include "tidy_options.h"
 #include "tidy_workspace.h"
 #include "tidy_parse.h"
-// #include "tidy_clean_and_repair.h"
+#include "tidy_clean_and_repair.h"
 
 #endif

@@ -1,9 +1,10 @@
 #include "handle_send.h"
 
+ETERM* handle_clean_and_repair(ErlMessage* emsg);
 ETERM* handle_parse(ErlMessage* emsg);
 
-#define MAX_HANDLERS 1
-ETERM* (*HANDLERS[MAX_HANDLERS])() = {handle_parse};
+#define MAX_HANDLERS 2
+ETERM* (*HANDLERS[MAX_HANDLERS])() = {handle_parse, handle_clean_and_repair};
 
 ETERM*
 err_term(const char* error_atom)

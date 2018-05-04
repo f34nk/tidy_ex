@@ -52,4 +52,19 @@ defmodule TidyEx do
     TidyEx.Parse.parse(bin)
   end
 
+  @doc """
+  Clean and repair any string with valid or broken html.
+  Returns valid html string.
+
+  ## Examples
+
+      iex> TidyEx.clean_and_repair("<div>Hello<span>World")
+      "<div>Hello<span>World</span></div>"
+
+  """
+  @spec clean_and_repair(input()) :: success() | error()
+  def clean_and_repair(bin) do
+    TidyEx.CleanAndRepair.clean_and_repair(bin)
+  end
+
 end

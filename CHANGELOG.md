@@ -4,7 +4,7 @@
 
 May 04, 2018
 
-- Feature `TidyEx.parse`
+- Feature `TidyEx.parse`, `TidyEx.clean_and_repair`
 - Documentation
 - TidyEx icon
 - Package test

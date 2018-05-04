@@ -83,7 +83,7 @@ See [CHANGELOG](https://github.com/f34nk/tidy_ex/blob/master/CHANGELOG.md).
 - [ ] Features
   - [x] Set tidy-html5 options
   - [x] Serialize any string with valid or broken html
-  - [ ] Clean and repair
+  - [x] Clean and repair
   - [ ] Run diagnostics
 - [ ] Documentation
 - [ ] Publish as hex package
