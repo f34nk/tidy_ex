@@ -49,7 +49,7 @@ EOF
 mix deps.get
 mix compile
 
-mix run -e 'IO.inspect "<a>Hello</a>" == TidyEx.parse("<p><a>Hello</a> World</p>")'
+mix run -e 'IO.inspect "<p>Hello World</p>" == TidyEx.parse("<p>Hello World</p>")'
 
 cd $current
 rm -rf package_test

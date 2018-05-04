@@ -4,7 +4,7 @@ defmodule TidyEx.MixProject do
   def project do
     [
       app: :tidy_ex,
-      version: "0.0.0",
+      version: "0.1.0-dev",
       elixir: "~> 1.5",
       compilers: [:tidy_ex_compile] ++ Mix.compilers(),
       build_embedded: Mix.env() == :prod,
@@ -33,7 +33,6 @@ defmodule TidyEx.MixProject do
         "Github" => "https://github.com/f34nk/tidy_ex",
         "Issues" => "https://github.com/f34nk/tidy_ex/issues",
         "nodex" => "https://github.com/Overbryd/nodex",
-        "tidy_html" => "https://github.com/f34nk/tidy_html",
         "tidy-html5" => "https://github.com/htacg/tidy-html5"
       },
       files: [
