@@ -96,7 +96,7 @@ foreach(TEST ${TESTS})
   target_sources(
     ${TEST_NAME}
     PUBLIC
-    ../handlers/${TEST_SOUCRE}
+    ../tidy/${TEST_SOUCRE}
   )
 
   # enable debugging and memory tracing for tests

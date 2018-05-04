@@ -10,6 +10,7 @@ then
 	echo "Clean tidy-html5..."
 	cd target/tidy-html5/build/cmake
 	make clean
+	rm CMakeCache.txt
 	cd $current
 	echo "done"
 fi
