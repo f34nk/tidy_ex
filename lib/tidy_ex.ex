@@ -23,6 +23,7 @@ defmodule TidyEx do
   """
   def resolve(list) when is_list(list) do
     cond do
+      Enum.count(list) == 0 -> ""
       Enum.count(list) == 1 -> List.first(list)
       true -> list
     end
@@ -77,7 +78,7 @@ defmodule TidyEx do
       "line 1 column 1 - Error: <pp> is not recognized!\\nThis document has errors that must be fixed before\\nusing HTML Tidy to generate a tidied up version."
 
   """
-  @spec clean_and_repair(input()) :: success() | error()
+  @spec run_diagnostics(input()) :: success() | error()
   def run_diagnostics(bin) do
     TidyEx.RunDiagnostics.run_diagnostics(bin)
   end

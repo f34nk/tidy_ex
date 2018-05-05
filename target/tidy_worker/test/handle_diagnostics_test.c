@@ -33,6 +33,20 @@ int main(int argc, const char * argv[])
   eterm_vec_destroy(&term_array);
   free(result);
 
+  html = "";
+  eterm_vec_init(&term_array);
+  run_diagnostics(w, html, &term_array);
+  result = eterm_vec_join(&term_array, "|");
+  printf("-> %s\n", result);
+  if(result != NULL){
+    eterm_vec_destroy(&term_array);
+    tidy_destroy(w);
+    TEST_ERROR
+    return 1;
+  }
+  eterm_vec_destroy(&term_array);
+
+
   tidy_map_deinit(&opt);
   tidy_destroy(w);
 
