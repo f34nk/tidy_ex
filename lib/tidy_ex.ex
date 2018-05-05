@@ -67,4 +67,19 @@ defmodule TidyEx do
     TidyEx.CleanAndRepair.clean_and_repair(bin)
   end
 
+  @doc """
+  Run diagnostics on string with valid or broken html.
+  Returns diagnostics string.
+
+  ## Examples
+
+      iex> TidyEx.run_diagnostics("<pp>Hello World</p>")
+      "line 1 column 1 - Error: <pp> is not recognized!\\nThis document has errors that must be fixed before\\nusing HTML Tidy to generate a tidied up version."
+
+  """
+  @spec clean_and_repair(input()) :: success() | error()
+  def run_diagnostics(bin) do
+    TidyEx.RunDiagnostics.run_diagnostics(bin)
+  end
+
 end

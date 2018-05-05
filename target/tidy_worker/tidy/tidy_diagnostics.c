@@ -2,6 +2,10 @@
 
 char* tidy_diagnostics(tidy_workspace_t* workspace, const char* data)
 {
+  if(data == NULL || strlen(data) == 0) {
+    return NULL;
+  }
+  
   TidyBuffer output = {0};
   TidyBuffer errors = {0};
 

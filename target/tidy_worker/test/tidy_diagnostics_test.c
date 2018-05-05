@@ -1,22 +1,19 @@
 
 #include "tidy_html.h"
 
-// int clean_and_repair_html_empty_test(tidy_workspace_t* w)
-// {
-//   TIDY_HTML_LOG
+int run_diagnostics_html_empty_test(tidy_workspace_t* w)
+{
+  TIDY_HTML_LOG
 
-//   const char* html = "";
-//   char* result = tidy_clean_and_repair(w, html);
-//   printf("-> '%s'\n", result);
-//   if(strcmp(result, "") != 0) {
-//     tidy_free(result);
-//     TIDY_HTML_LOG_ERROR
-//     return 1;
-//   }
-//   tidy_free(result);
-
-//   return 0;
-// }
+  const char* html = "";
+  char* result = tidy_diagnostics(w, html);
+  printf("-> '%s'\n", result);
+  if(result != NULL) {
+    TIDY_HTML_LOG_ERROR
+    return 1;
+  }
+  return 0;
+}
 
 // int clean_and_repair_html_string_test(tidy_workspace_t* w)
 // {
@@ -52,8 +49,8 @@ int run_diagnostics_broken_html_test(tidy_workspace_t* w)
   return 0;
 }
 
-#define max_tests 1
-int (*test[max_tests])() = {run_diagnostics_broken_html_test};
+#define max_tests 2
+int (*test[max_tests])() = {run_diagnostics_html_empty_test, run_diagnostics_broken_html_test};
 
 int main(int argc, char const* argv[])
 {

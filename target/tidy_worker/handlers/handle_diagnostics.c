@@ -7,6 +7,9 @@
 void run_diagnostics(tidy_workspace_t* workspace, const char* html, vec_eterm_t* term_array)
 {
   char* result = tidy_diagnostics(workspace, html);
+  if(result == NULL) {
+    return;
+  }
   eterm_vec_push(term_array, erl_mk_binary(result, strlen(result)));
   tidy_free(result);
 }
@@ -49,19 +52,19 @@ ETERM* handle_diagnostics(ErlMessage* emsg)
 
     tidy_workspace_t* workspace = tidy_init(&options);
 
-    // vec_eterm_t term_array;
-    // eterm_vec_init(&term_array);
-    // parse(workspace, html, &term_array);
-    // ETERM* term_list = eterm_vec_to_list(term_array);
-    // response = erl_format("{parse, ~w}", term_list);
+    vec_eterm_t term_array;
+    eterm_vec_init(&term_array);
+    run_diagnostics(workspace, html, &term_array);
+    ETERM* term_list = eterm_vec_to_list(term_array);
+    response = erl_format("{run_diagnostics, ~w}", term_list);
 
-    char* result = tidy_parse(workspace, html);
-    response = erl_format("{run_diagnostics, ~w}", erl_mk_binary(result, strlen(result)));
-    tidy_free(result);
+    // char* result = tidy_parse(workspace, html);
+    // response = erl_format("{run_diagnostics, ~w}", erl_mk_binary(result, strlen(result)));
+    // tidy_free(result);
 
     // free allocated resources
-    // eterm_vec_destroy(&term_array);
-    // erl_free_term(term_list);
+    eterm_vec_destroy(&term_array);
+    erl_free_term(term_list);
     tidy_map_deinit(&options);
     tidy_destroy(workspace);
     erl_free_term(html_term);
