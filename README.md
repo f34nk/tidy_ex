@@ -1,5 +1,3 @@
-# *Under development...*
-
 [![Build status](https://travis-ci.org/f34nk/tidy_ex.svg?branch=master)](https://travis-ci.org/f34nk/tidy_ex)
 [![ModestEx version](https://img.shields.io/hexpm/v/tidy_ex.svg)](https://hex.pm/packages/tidy_ex)
 [![Hex.pm](https://img.shields.io/hexpm/dt/tidy_ex.svg)](https://hex.pm/packages/tidy_ex)
@@ -36,11 +34,24 @@ test "can clean and repair broken html" do
   result = TidyEx.clean_and_repair("<div>Hello<span>World")
   assert result == "<div>Hello<span>World</span></div>"
 end
+
+test "can run diagnostics invalud html" do
+  result = TidyEx.run_diagnostics("<pp>Hello World</p>")
+  assert result == "line 1 column 1 - Error: <pp> is not recognized!\nThis document has errors that must be fixed before\nusing HTML Tidy to generate a tidied up version."
+end
 ```
 
 ## Installation
 
-Not yet published
+Available on [hex](https://hex.pm/packages/tidy_ex).
+
+```elixir
+def deps do
+  [
+    {:tidy_ex, "~> 0.1.0-dev"}
+  ]
+end
+```
 
 ## Target dependencies
 ```
@@ -82,16 +93,16 @@ See [CHANGELOG](https://github.com/f34nk/tidy_ex/blob/master/CHANGELOG.md).
 - [ ] Tests
   - [ ] Call as C-Node
   - [ ] Call as dirty-nif
-  - [ ] Target tests
-  - [ ] Feature tests
-  - [ ] Package test
+  - [x] Target tests
+  - [x] Feature tests
+  - [x] Package test
 - [ ] Features
   - [x] Set tidy-html5 options
   - [x] Serialize any string with valid or broken html
   - [x] Clean and repair
-  - [ ] Run diagnostics
+  - [x] Run diagnostics
 - [ ] Documentation
-- [ ] Publish as hex package
+- [x] Publish as hex package
 
 ## Icon Credit
 
