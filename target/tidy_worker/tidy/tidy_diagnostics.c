@@ -8,6 +8,10 @@ char* tidy_diagnostics(tidy_workspace_t* workspace, const char* data)
   tidySetErrorBuffer(workspace->doc, &errors);
 
   int result = tidyParseString(workspace->doc, data);
+  if(result < 0) {
+    return NULL;
+  }
+
   if(result >= 0) {
     result = tidyRunDiagnostics(workspace->doc);
     // tidyOptSetBool(workspace->doc, TidyForceOutput, yes);

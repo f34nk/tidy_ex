@@ -42,7 +42,7 @@ int run_diagnostics_broken_html_test(tidy_workspace_t* w)
   const char* html = "<a hre=www.google.de>Hello<pp>World";
   char* result = tidy_diagnostics(w, html);
   printf("-> '%s'\n", result);
-  if(strcmp(result, "<p>Hello</p><p>World</p>") != 0) {
+  if(strcmp(result, "line 1 column 27 - Error: <pp> is not recognized!\nThis document has errors that must be fixed before\nusing HTML Tidy to generate a tidied up version.") != 0) {
     tidy_free(result);
     TIDY_HTML_LOG_ERROR
     return 1;
