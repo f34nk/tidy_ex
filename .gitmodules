@@ -10,3 +10,6 @@
 [submodule "target/vec"]
 	path = target/vec
 	url = https://github.com/rxi/vec.git
+[submodule "target/tidy-html5-tests"]
+	path = target/tidy-html5-tests
+	url = https://github.com/htacg/tidy-html5-tests.git

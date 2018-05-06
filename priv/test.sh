@@ -4,17 +4,17 @@ current=`pwd`
 
 echo "Test TidyEx target from $current"
 
-# check=`find target \( -name libmodest_static.a -o -name libmodest.so \)`
-# if [ ! -z "$check" ]
-# then
+check=`find target/tidy-html5/build/cmake \( -name tidy \)`
+if [ ! -z "$check" ]
+then
 
-#   echo "Test Modest..."
+  echo "Test tidy-html5..."
 
-#   cd target/Modest
-#   make test
-#   cd $current
-#   echo "done"
-# fi
+  cd target/tidy-html5-tests/tools-sh
+  ./run-tests.sh
+  cd $current
+  echo "done"
+fi
 
 check=`find priv -name tidy_worker`
 if [ ! -z "$check" ]

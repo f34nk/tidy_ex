@@ -15,6 +15,7 @@ then
 	rm CPackSourceConfig.cmake
 	rm cmake_install.cmake
 	rm tidy.pc
+	rm tidy
 	rm -rf CMakeFiles
 	cd $current
 	echo "done"
