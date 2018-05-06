@@ -11,6 +11,11 @@ then
 	cd target/tidy-html5/build/cmake
 	make clean
 	rm CMakeCache.txt
+	rm CPackConfig.cmake
+	rm CPackSourceConfig.cmake
+	rm cmake_install.cmake
+	rm tidy.pc
+	rm -rf CMakeFiles
 	cd $current
 	echo "done"
 fi
