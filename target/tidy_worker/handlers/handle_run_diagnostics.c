@@ -6,7 +6,7 @@
 
 void run_diagnostics(tidy_workspace_t* workspace, const char* html, vec_eterm_t* term_array)
 {
-  char* result = tidy_diagnostics(workspace, html);
+  char* result = tidy_run_diagnostics(workspace, html);
   if(result == NULL) {
     return;
   }
@@ -14,7 +14,7 @@ void run_diagnostics(tidy_workspace_t* workspace, const char* html, vec_eterm_t*
   tidy_free(result);
 }
 
-ETERM* handle_diagnostics(ErlMessage* emsg)
+ETERM* handle_run_diagnostics(ErlMessage* emsg)
 {
   ETERM* response = NULL;
   ETERM* pattern = erl_format("{run_diagnostics, Html, Options}");

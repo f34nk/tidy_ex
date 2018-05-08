@@ -2,10 +2,10 @@
 
 ETERM* handle_clean_and_repair(ErlMessage* emsg);
 ETERM* handle_parse(ErlMessage* emsg);
-ETERM* handle_diagnostics(ErlMessage* emsg);
+ETERM* handle_run_diagnostics(ErlMessage* emsg);
 
 #define MAX_HANDLERS 3
-ETERM* (*HANDLERS[MAX_HANDLERS])() = {handle_parse, handle_clean_and_repair, handle_diagnostics};
+ETERM* (*HANDLERS[MAX_HANDLERS])() = {handle_parse, handle_clean_and_repair, handle_run_diagnostics};
 
 ETERM*
 err_term(const char* error_atom)

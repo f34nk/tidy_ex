@@ -9,7 +9,7 @@ defmodule TidyEx do
 
   ## Example
 
-      iex> TidyEx.parse("<p>Hello World")
+      iex#> TidyEx.parse("<p>Hello World")
       "<p>Hello World</p>"
 
   """
@@ -38,7 +38,7 @@ defmodule TidyEx do
   Internal use
   """
   def options() do
-    Application.get_env(:tidy_ex, :options, [{"TidyShowWarnings", "no"}, {"TidyBodyOnly", "yes"}, {"TidyQuiet", "yes"}, {"TidyVertSpace", "auto"}, {"TidyIndentSpaces", "0"}])
+    Application.get_env(:tidy_ex, :options, [{"TidyForceOutput", "yes"}, {"TidyShowErrors", "0"}, {"TidyShowWarnings", "no"}, {"TidyBodyOnly", "yes"}, {"TidyQuiet", "yes"}, {"TidyVertSpace", "auto"}, {"TidyIndentSpaces", "0"}])
   end
 
   @doc """
@@ -47,7 +47,7 @@ defmodule TidyEx do
 
   ## Examples
 
-      iex> TidyEx.parse("<div>Hello<span>World")
+      iex#> TidyEx.parse("<div>Hello<span>World")
       "<div>Hello<span>World</span></div>"
 
   """
@@ -62,7 +62,7 @@ defmodule TidyEx do
 
   ## Examples
 
-      iex> TidyEx.clean_and_repair("<div>Hello<span>World")
+      iex#> TidyEx.clean_and_repair("<div>Hello<span>World")
       "<div>Hello<span>World</span></div>"
 
   """
@@ -77,7 +77,7 @@ defmodule TidyEx do
 
   ## Examples
 
-      iex> TidyEx.run_diagnostics("<pp>Hello World</p>")
+      iex#> TidyEx.run_diagnostics("<pp>Hello World</p>")
       "line 1 column 1 - Error: <pp> is not recognized!\\nThis document has errors that must be fixed before\\nusing HTML Tidy to generate a tidied up version."
 
   """

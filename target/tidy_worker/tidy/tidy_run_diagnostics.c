@@ -1,6 +1,6 @@
-#include "tidy_diagnostics.h"
+#include "tidy_run_diagnostics.h"
 
-char* tidy_diagnostics(tidy_workspace_t* workspace, const char* data)
+char* tidy_run_diagnostics(tidy_workspace_t* workspace, const char* data)
 {
   if(data == NULL || strlen(data) == 0) {
     return NULL;

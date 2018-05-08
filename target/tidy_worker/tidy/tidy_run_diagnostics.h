@@ -1,5 +1,5 @@
-#ifndef TIDY_DIAGNOSTICS_H
-#define TIDY_DIAGNOSTICS_H
+#ifndef TIDY_RUN_DIAGNOSTICS_H
+#define TIDY_RUN_DIAGNOSTICS_H
 
 /*
  Copyright (C) 2018 Frank Eickhoff
@@ -27,6 +27,6 @@
  * @param  data      [html string]
  * @return           [new html]
  */
-char* tidy_diagnostics(tidy_workspace_t* workspace, const char* data);
+char* tidy_run_diagnostics(tidy_workspace_t* workspace, const char* data);
 
 #endif

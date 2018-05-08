@@ -3,6 +3,10 @@
 char* tidy_clean_and_repair(tidy_workspace_t* workspace, const char* data)
 {
   TidyBuffer output = {0};
+  TidyBuffer errors = {0};
+
+  tidySetErrorBuffer(workspace->doc, &errors);
+  
   int result = tidyParseString(workspace->doc, data);
   if(result >= 0) {
     result = tidyCleanAndRepair(workspace->doc);
@@ -27,6 +31,7 @@ char* tidy_clean_and_repair(tidy_workspace_t* workspace, const char* data)
 
   // free tidy buffer
   tidyBufFree(&output);
+  tidyBufFree(&errors);
 
   return copy;
 }

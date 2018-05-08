@@ -6,7 +6,7 @@ int run_diagnostics_html_empty_test(tidy_workspace_t* w)
   TIDY_HTML_LOG
 
   const char* html = "";
-  char* result = tidy_diagnostics(w, html);
+  char* result = tidy_run_diagnostics(w, html);
   printf("-> '%s'\n", result);
   if(result != NULL) {
     TIDY_HTML_LOG_ERROR
@@ -37,7 +37,7 @@ int run_diagnostics_broken_html_test(tidy_workspace_t* w)
   TIDY_HTML_LOG
 
   const char* html = "<a hre=www.google.de>Hello<pp>World";
-  char* result = tidy_diagnostics(w, html);
+  char* result = tidy_run_diagnostics(w, html);
   printf("-> '%s'\n", result);
   if(strcmp(result, "line 1 column 27 - Error: <pp> is not recognized!\nThis document has errors that must be fixed before\nusing HTML Tidy to generate a tidied up version.") != 0) {
     tidy_free(result);
