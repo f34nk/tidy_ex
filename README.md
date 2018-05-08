@@ -41,6 +41,9 @@ test "can run diagnostics invalud html" do
 end
 ```
 
+TidyEx supports most of the [tidy-html5 options](http://api.html-tidy.org/tidy/tidylib_api_5.6.0/group__public__enumerations.html#ga3a1401652599150188a168dade7dc150).
+See [**complete options list**](https://github.com/f34nk/tidy_ex/blob/master/OPTIONS.md).
+
 ## Installation
 
 Available on [hex](https://hex.pm/packages/tidy_ex).

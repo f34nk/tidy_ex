@@ -32,21 +32,21 @@ const static struct {
   TidyOptionId value;
   const char* string;
 } conversion [] = {
-  // TidyAccessibilityCheckLevel, // Accessibility check level
+  {TidyAccessibilityCheckLevel, "TidyAccessibilityCheckLevel"}, // Accessibility check level
   {TidyAltText, "TidyAltText"}, // Default text for alt attribute
   {TidyAnchorAsName, "TidyAnchorAsName"}, // Define anchors as name attributes
-  // TidyAsciiChars, // Convert quotes and dashes to nearest ASCII char
-  // TidyBlockTags, // Declared block tags
+  {TidyAsciiChars, "TidyAsciiChars"}, // Convert quotes and dashes to nearest ASCII char
+  {TidyBlockTags, "TidyBlockTags"}, // Declared block tags
   {TidyBodyOnly, "TidyBodyOnly"}, // Output BODY content only
   {TidyBreakBeforeBR, "TidyBreakBeforeBR"}, // Output newline before <br> or not?
-  // TidyCharEncoding, // In/out character encoding
-  // TidyCoerceEndTags, // Coerce end tags from start tags where probably intended
+  {TidyCharEncoding, "TidyCharEncoding"}, // In/out character encoding
+  {TidyCoerceEndTags, "TidyCoerceEndTags"}, // Coerce end tags from start tags where probably intended
   {TidyCSSPrefix, "TidyCSSPrefix"}, // CSS class naming for clean option
   // #ifndef DOXYGEN_SHOULD_SKIP_THIS
   // TidyCustomTags, // Internal use ONLY
   // #endif
-  // TidyDecorateInferredUL, // Mark inferred UL elements with no indent CSS
-  // TidyDoctype, // User specified doctype
+  {TidyDecorateInferredUL, "TidyDecorateInferredUL"}, // Mark inferred UL elements with no indent CSS
+  {TidyDoctype, "TidyDoctype"}, // User specified doctype
   // #ifndef DOXYGEN_SHOULD_SKIP_THIS
   // TidyDoctypeMode, // Internal use ONLY
   // #endif
@@ -54,7 +54,7 @@ const static struct {
   {TidyDropEmptyParas, "TidyDropEmptyParas"}, // Discard empty p elements
   {TidyDropPropAttrs, "TidyDropPropAttrs"}, // Discard proprietary attributes
   {TidyDuplicateAttrs, "TidyDuplicateAttrs"}, // Keep first or last duplicate attribute
-  // TidyEmacs, // If true, format error output for GNU Emacs
+  {TidyEmacs, "TidyEmacs"}, // If true, format error output for GNU Emacs
   // #ifndef DOXYGEN_SHOULD_SKIP_THIS
   // TidyEmacsFile, // Internal use ONLY
   // #endif
@@ -71,7 +71,7 @@ const static struct {
   {TidyGDocClean, "TidyGDocClean"}, // Clean up HTML exported from Google Docs
   {TidyHideComments, "TidyHideComments"}, // Hides all (real) comments in output
   {TidyHtmlOut, "TidyHtmlOut"}, // Output plain HTML, even for XHTML input.*/
-  // TidyInCharEncoding, // Input character encoding (if different)
+  {TidyInCharEncoding, "TidyInCharEncoding"}, // Input character encoding (if different)
   {TidyIndentAttributes, "TidyIndentAttributes"}, // Newline+indent before each attribute
   {TidyIndentCdata, "TidyIndentCdata"}, // Indent <!CDATA[ ... ]]> section
   {TidyIndentContent, "TidyIndentContent"}, // Indent content of appropriate tags
@@ -91,13 +91,13 @@ const static struct {
   {TidyMergeEmphasis, "TidyMergeEmphasis"}, //*< Merge nested B and I elements
   {TidyMergeSpans, "TidyMergeSpans"}, // Merge multiple SPANs
   {TidyMetaCharset, "TidyMetaCharset"}, // Adds/checks/fixes meta charset in the head, based on document type
-  // TidyMuteReports, // Filter these messages from output.
-  // TidyMuteShow, // Show message ID's in the error table
+  {TidyMuteReports, "TidyMuteReports"}, // Filter these messages from output.
+  {TidyMuteShow, "TidyMuteShow"}, // Show message ID's in the error table
   {TidyNCR, "TidyNCR"}, // Allow numeric character references
   {TidyNewline, "TidyNewline"}, // Output line ending (default to platform)
   {TidyNumEntities, "TidyNumEntities"}, // Use numeric entities
-  // TidyOmitOptionalTags, // Suppress optional start tags and end tags
-  // TidyOutCharEncoding, // Output character encoding (if different)
+  {TidyOmitOptionalTags, "TidyOmitOptionalTags"}, // Suppress optional start tags and end tags
+  {TidyOutCharEncoding, "TidyOutCharEncoding"}, // Output character encoding (if different)
   // TidyOutFile, // File name to write markup to
   // TidyOutputBOM, // Output a Byte Order Mark (BOM) for UTF-16 encodings
   {TidyPPrintTabs, "TidyPPrintTabs"}, // Indent using tabs istead of spaces
@@ -110,10 +110,10 @@ const static struct {
   {TidyQuoteMarks, "TidyQuoteMarks"}, // Output " marks as &quot;
   {TidyQuoteNbsp, "TidyQuoteNbsp"}, // Output non-breaking space as entity
   {TidyReplaceColor, "TidyReplaceColor"}, // Replace hex color attribute values with names
-  // TidyShowErrors, // Number of errors to put out
-  // TidyShowInfo, // If true, info-level messages are shown
-  // TidyShowMarkup, // If false, normal output is suppressed
-  // TidyShowMetaChange, // show when meta http-equiv content charset was changed - compatibility
+  {TidyShowErrors, "TidyShowErrors"}, // Number of errors to put out
+  {TidyShowInfo, "TidyShowInfo"}, // If true, info-level messages are shown
+  {TidyShowMarkup, "TidyShowMarkup"}, // If false, normal output is suppressed
+  {TidyShowMetaChange, "TidyShowMetaChange"}, // show when meta http-equiv content charset was changed - compatibility
   {TidyShowWarnings, "TidyShowWarnings"}, // However errors are always shown
   {TidySkipNested, "TidySkipNested"}, // Skip nested tags in script and style CDATA
   {TidySortAttributes, "TidySortAttributes"}, // Sort attributes
@@ -124,16 +124,16 @@ const static struct {
   {TidyUpperCaseTags, "TidyUpperCaseTags"}, // Output tags in upper not lower case
   {TidyUseCustomTags, "TidyUseCustomTags"}, // Enable Tidy to use autonomous custom tags
   {TidyVertSpace, "TidyVertSpace"}, // degree to which markup is spread out vertically
-  // TidyWarnPropAttrs, // Warns on proprietary attributes
-  // TidyWord2000, // Draconian cleaning for Word2000
+  {TidyWarnPropAttrs, "TidyWarnPropAttrs"}, // Warns on proprietary attributes
+  {TidyWord2000, "TidyWord2000"}, // Draconian cleaning for Word2000
   {TidyWrapAsp, "TidyWrapAsp"}, // Wrap within ASP pseudo elements
   {TidyWrapAttVals, "TidyWrapAttVals"}, // Wrap within attribute values
-  // TidyWrapJste, // Wrap within JSTE pseudo elements
+  {TidyWrapJste, "TidyWrapJste"}, // Wrap within JSTE pseudo elements
   {TidyWrapLen, "TidyWrapLen"}, // Wrap margin
   {TidyWrapPhp, "TidyWrapPhp"}, // Wrap within PHP pseudo elements
   {TidyWrapScriptlets, "TidyWrapScriptlets"}, // Wrap within JavaScript string literals
   {TidyWrapSection, "TidyWrapSection"}, // Wrap within <![ ... ]> section tags
-  // TidyWriteBack, // If true then output tidied markup
+  {TidyWriteBack, "TidyWriteBack"}, // If true then output tidied markup
   {TidyXhtmlOut, "TidyXhtmlOut"}, // Output extensible HTML
   {TidyXmlDecl, "TidyXmlDecl"}, // Add <?xml?> for XML docs
   {TidyXmlOut, "TidyXmlOut"}, // Create output as XML
