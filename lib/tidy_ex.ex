@@ -38,7 +38,7 @@ defmodule TidyEx do
   Internal use
   """
   def options() do
-    Application.get_env(:tidyt_ex, :options, [{"TidyShowWarnings", "no"}, {"TidyBodyOnly", "yes"}, {"TidyQuiet", "yes"}, {"TidyVertSpace", "auto"}, {"TidyIndentSpaces", "0"}])
+    Application.get_env(:tidy_ex, :options, [{"TidyShowWarnings", "no"}, {"TidyBodyOnly", "yes"}, {"TidyQuiet", "yes"}, {"TidyVertSpace", "auto"}, {"TidyIndentSpaces", "0"}])
   end
 
   @doc """
