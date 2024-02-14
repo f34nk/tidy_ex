@@ -1,3 +1,5 @@
+# This project is not maintained anymore.
+
 [![Build status](https://travis-ci.org/f34nk/tidy_ex.svg?branch=master)](https://travis-ci.org/f34nk/tidy_ex)
 [![ModestEx version](https://img.shields.io/hexpm/v/tidy_ex.svg)](https://hex.pm/packages/tidy_ex)
 [![Hex.pm](https://img.shields.io/hexpm/dt/tidy_ex.svg)](https://hex.pm/packages/tidy_ex)
